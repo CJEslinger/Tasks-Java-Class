@@ -48,6 +48,41 @@ public class HoneyDoList {
 			
 	}
 	
+	public Task completeTask(int index) {
+		Task t = null;
+		if (tasks[index] != null) {
+			t.setEstMinsToComplete(tasks[index].getEstMinsToComplete()); 
+			t.setName(tasks[index].getName());
+			t.increasePriority(tasks[index].getPriority());
+			shiftList(index);
+			tasks[index] = null;
+		}
+		return t;
+	}
+	
+	private void shiftList(int index) {
+		Task []storage;
+		int storageCapacity = 0;
+		int j = 0;
+		for (int i = index;i<tasks.length; i++) {
+			if (tasks[i] != null) {
+				storageCapacity++;
+			}
+		}
+		storage = new Task[storageCapacity];
+		for (int i = index+1;i<tasks.length; i++) {
+			if (tasks[i] != null) {
+				storage[j] = tasks[i];
+				j++;
+			}
+		}
+		tasks[index] = null;
+		for (int i = 0;i<storage.length; i++) {
+			tasks[index] = storage[i];
+			index++;
+		}
+	}
+	
 	public void addTask(Task t) {
 		for (Task task: tasks) {
 			if(task == null) {
@@ -57,6 +92,7 @@ public class HoneyDoList {
 				return;
 			}
 		} 
-		tasks = new Task[INITIAL_CAPACITY +1 ];
+		tasks = new Task[tasks.length+1];
+		tasks[tasks.length-1] = t;
 	}
 }
