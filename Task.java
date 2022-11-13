@@ -52,6 +52,6 @@ public class Task {
 	}
 	
 	public String toString() {
-		return ("TaskName: "+name+"\nTask Priority: "+priority+"\nEstimated Time: "+estMinsToComplete);
+		return ("TaskName: "+name+"\nTask Priority: "+priority+"\nEstimated Time: "+estMinsToComplete+"\n\n");
 	}
 }
