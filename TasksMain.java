@@ -10,7 +10,7 @@ public class TasksMain {
 		Task task3 = new Task("task 3", 9, 180);
 		
 		
-		HoneyDoList tasks = new HoneyDoList(3);
+		HoneyDoList tasks = new HoneyDoList();
 		tasks.addTask(task1);
 		tasks.addTask(task2);
 		tasks.addTask(task3);

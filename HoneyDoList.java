@@ -2,11 +2,11 @@
 public class HoneyDoList {
 	private Task []tasks;
 	private int numTasks;
-	private int INITIAL_CAPACITY;
+	private int INITIAL_CAPACITY = 10;
 	
-	public HoneyDoList (int initial) {
-		INITIAL_CAPACITY = initial;
-		tasks = new Task[initial];
+	public HoneyDoList () {
+		tasks = new Task[INITIAL_CAPACITY];
+		numTasks = 0;
 	}
 	
 	public Task[] getTasks() {
@@ -54,39 +54,12 @@ public class HoneyDoList {
 			
 	}
 	
-	public Task completeTask(int index) {
-		Task t = null;
-		if (tasks[index] != null) {
-			t = new Task(tasks[index].getName(), 
-					tasks[index].getPriority(),
-					tasks[index].getEstMinsToComplete());
-			shiftList(index);
-			tasks[index] = null;
+	public void completeTask(int index) {
+		for (int i =index; i < numTasks-1; i++) {
+			tasks[i] = tasks[i+1];
 		}
-		return t;
-	}
-	
-	private void shiftList(int index) {
-		Task []storage;
-		int storageCapacity = 0;
-		int j = 0;
-		for (int i = index;i<tasks.length; i++) {
-			if (tasks[i] != null) {
-				storageCapacity++;
-			}
-		}
-		storage = new Task[storageCapacity];
-		for (int i = index+1;i<tasks.length; i++) {
-			if (tasks[i] != null) {
-				storage[j] = tasks[i];
-				j++;
-			}
-		}
-		tasks[index] = null;
-		for (int i = 0;i<storage.length; i++) {
-			tasks[index] = storage[i];
-			index++;
-		}
+		numTasks--;
+		tasks[numTasks] = null;
 	}
 	
 	public void addTask(Task t) {
