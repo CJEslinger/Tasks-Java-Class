@@ -1,3 +1,6 @@
+//Christopher Eslinger
+//Assignment 9
+//11/14/22
 
 public class HoneyDoList {
 	private Task []tasks;
@@ -9,8 +12,8 @@ public class HoneyDoList {
 		numTasks = 0;
 	}
 	
-	public Task[] getTasks() {
-		return tasks;
+	public Task getTask(int index) {
+		return tasks[index];
 	}
 	
 	public String toString() {
@@ -23,7 +26,7 @@ public class HoneyDoList {
 	}
 	
 	public int find(String name) {
-		for(int i = 0; i < tasks.length; i++) {
+		for(int i = 0; i < numTasks; i++) {
 			if(name.equalsIgnoreCase(tasks[i].getName())) {
 				return i;
 			}

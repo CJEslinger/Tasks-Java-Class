@@ -1,3 +1,7 @@
+//Christopher Eslinger
+//Assignment 9
+//11/14/22
+
 import java.time.LocalDateTime;
 public class TasksMain {
 
@@ -16,8 +20,17 @@ public class TasksMain {
 		tasks.addTask(task3);
 		tasks.addTask(doMyHW);
 		
+		System.out.println(tasks.getTask(1));
+		
+		System.out.println(tasks.shortestTime());
 
+		System.out.println(tasks.totalTime());
 		tasks.completeTask(2);
+		
+
+		
+		System.out.println(tasks.find("finish 1068 homework"));
+		System.out.println(tasks.shortestTime());
 		
 		System.out.println(tasks.toString());
 		
